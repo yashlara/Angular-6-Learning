@@ -1,0 +1,147 @@
+
+<div class="container ">
+
+  <form #employeeForm="ngForm" class="well form-horizontal fullform" (ngSubmit)="saveEmployee(employeeForm)" id="contact_form">
+    <fieldset>
+
+      <!-- Form Name -->
+      <div class="jumbotron">
+        <h3 style="text-align: center">Please Input your Information</h3>
+
+      </div>
+
+      <!-- Text input-->
+
+      <div class="form-group" [class.has-error]="nameControl.invalid && nameControl.touched">
+        <label class="col-md-4 control-label">Name</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input required #nameControl="ngModel" name="name" [(ngModel)]="fullName" placeholder="Name" class="form-control"
+              type="text">
+
+          </div>
+          <span class="help-block" *ngIf="nameControl.invalid && nameControl.touched">*Please enter your name.</span>
+        </div>
+      </div>
+
+      <!-- radio checks -->
+      <div class="form-group" [class.has-error]="malecon.invalid && malecon.touched">
+        <label class="col-md-4 control-label">Sex</label>
+        <div class="col-md-4">
+
+          <label class="rad">
+            <input required #malecon="ngModel" [(ngModel)]="male" type="radio" name="sex" value="male" /> <span class="checkmark"></span>
+            Male</label> &nbsp;
+
+
+          <label class="rad">
+            <input required #femalecon="ngModel" [(ngModel)]="female" type="radio" name="sex" value="female" /> <span
+              class="checkmark"></span>Female
+          </label>
+
+        </div>
+        <span class="help-block" *ngIf="malecon.invalid && femalecon.invalid">*Please enter your sex</span>
+      </div>
+
+      <!-- checkboxes------------------------------------------------ -->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Activities</label>
+        <div class="col-md-4">
+
+          <label class="checkbox-inline rad2">
+            <input #actcontrol1="ngModel" type="checkbox" [(ngModel)]="act1" value="sing" name="sing"><span class="checkboxmark"></span>
+            Sing
+          </label>
+          <label class="checkbox-inline rad2">
+            <input #actcontrol2="ngModel" type="checkbox" [(ngModel)]="act2" value="dance" name="dance"><span class="checkboxmark"></span>
+            Dance
+          </label>
+          <label class="checkbox-inline rad2">
+            <input #actcontro3l="ngModel" type="checkbox" [(ngModel)]="act3" value="draw" name="draw"><span class="checkboxmark"></span>
+            Draw
+          </label>
+        </div>
+
+      </div>
+
+
+
+
+
+      <!-- Age drop down input -->
+
+      <div class="form-group" [class.has-error]="agecontrol.invalid && agecontrol.touched">
+        <label for="age" class="col-md-4 control-label">Age</label>
+        <div class="col-md-4 selectContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+
+            <select id="age" required #agecontrol="ngModel" name="Age" [(ngModel)]="Age" class="form-control selectpicker">
+              
+                
+                    <!-- <option ng-repeat="n in [] | range:10">
+                       {{$index}}
+                    </option>
+                    </select> -->
+              <option>Please select </option>
+              <option value="0-10">0-10 years</option>
+              <option value="10-20">10-20 years</option>
+              <option value="20-30">20-30 years</option>
+              <option value="30-40">30-40 years</option>
+              <option value="40-50">40-50 years</option>
+              <option value="50-60">50-60 years</option>
+              <option value="60-70">60-70 years</option>
+              <option value="70+">70+ years</option>
+
+            </select>
+          </div>
+          <span class="help-block" *ngIf="agecontrol.invalid && agecontrol.touched">*Please select your age.</span>
+        </div>
+      </div>
+
+      <!-- Age drop down input -->
+
+      <div class="form-group" [class.has-error]="educontrol.invalid && educontrol.touched">
+        <label class="col-md-4 control-label">Education</label>
+        <div class="col-md-4 selectContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+            <select required #educontrol="ngModel" [(ngModel)]="school" name="Education" class="form-control selectpicker">
+              <option *ngFor="let degree of Education">{{degree}}</option>
+            </select>
+          </div>
+          <span class="help-block" *ngIf="educontrol.invalid && educontrol.touched">*Please select your Educational
+            qualification.</span>
+        </div>
+      </div>
+
+      <!-- Email input-->
+      <div class="form-group" [class.has-error]="emailControl.invalid && emailControl.touched">
+        <label class="col-md-4 control-label">E-Mail</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input required #emailControl="ngModel" name="email" [(ngModel)]="email" placeholder="E-Mail Address" class="form-control"
+              type="text">
+          </div>
+          <span class="help-block" *ngIf="emailControl.invalid && emailControl.touched">*Please enter your email</span>
+        </div>
+      </div>
+
+
+
+      <!-- Button -->
+      <div class="form-group btnpad">
+        <label class="col-md-12 control-label"></label>
+        <div class="col-md-12">
+          <button [disabled]="employeeForm.invalid" type="submit" class="col-md-12 btn btn-warning btnsize">SUBMIT
+          </button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+<!-- </div>/.container -->
